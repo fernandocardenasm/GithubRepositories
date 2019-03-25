@@ -13,6 +13,7 @@
 		ED50466F22444314002CBAB8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED50466E22444314002CBAB8 /* ViewController.swift */; };
 		ED50467422444316002CBAB8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED50467322444316002CBAB8 /* Assets.xcassets */; };
 		ED50468222444316002CBAB8 /* GithubRepoListsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED50468122444316002CBAB8 /* GithubRepoListsTests.swift */; };
+		EDFC489A22497E080008822E /* GithubServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFC489922497E080008822E /* GithubServiceTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		ED50467D22444316002CBAB8 /* GithubRepoListsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GithubRepoListsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED50468122444316002CBAB8 /* GithubRepoListsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubRepoListsTests.swift; sourceTree = "<group>"; };
 		ED50468322444316002CBAB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EDFC489922497E080008822E /* GithubServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubServiceTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 			children = (
 				ED50468122444316002CBAB8 /* GithubRepoListsTests.swift */,
 				ED50468322444316002CBAB8 /* Info.plist */,
+				EDFC489922497E080008822E /* GithubServiceTests.swift */,
 			);
 			path = GithubRepoListsTests;
 			sourceTree = "<group>";
@@ -319,6 +322,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDFC489A22497E080008822E /* GithubServiceTests.swift in Sources */,
 				ED50468222444316002CBAB8 /* GithubRepoListsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

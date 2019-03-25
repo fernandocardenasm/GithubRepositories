@@ -26,6 +26,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         setupViews()
+        registerCellForLanguagesTableView()
+        setupBindings()
     }
     
     private func setupViews() {
@@ -41,13 +43,20 @@ class ViewController: UIViewController {
             ].forEach { $0.isActive = true}
     }
     
+    private func registerCellForLanguagesTableView() {
+        languagesTableView.register(UITableViewCell.self, forCellReuseIdentifier: Constants.languagesReuseIdentifier)
+    }
+    
     private func setupBindings() {
         languagesListViewModel.languages
         .observeOn(MainScheduler.instance)
-        .bind(to: languagesTableView.rx.items(cellIdentifier: "languagesTableView")) { row, model, cell in
+        .bind(to: languagesTableView.rx.items(cellIdentifier: Constants.languagesReuseIdentifier)) { row, model, cell in
             cell.textLabel?.text = model.capitalized
-            
         }.disposed(by: disposeBag)
+    }
+    
+    private struct Constants {
+        static let languagesReuseIdentifier = "languagesTableViewId"
     }
 }
 
@@ -93,7 +102,6 @@ class RepositoryViewModel {
 
 /// A service that knows how to perform requests for GitHub data.
 class GithubService {
-    
     private let session: URLSession
     
     init(session: URLSession = URLSession.shared) {
