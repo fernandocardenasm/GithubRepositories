@@ -13,13 +13,14 @@ import RxTest
 
 class GithubServiceTests: XCTestCase {
     func test_getLanguageList() {
+        let disposeBag = DisposeBag()
         let urlSession = URLSessionMock()
         let service = GithubService(session: urlSession)
         
         let scheduler = TestScheduler(initialClock: 0)
         let observer = scheduler.createObserver(String.self)
         
-        service.getLanguageList().subscribe(observer)
+        service.getLanguageList().bind(to: observer).di
     }
 }
 
