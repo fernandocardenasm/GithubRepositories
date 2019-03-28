@@ -18,9 +18,28 @@ class GithubServiceTests: XCTestCase {
         let service = GithubService(session: urlSession)
         
         let scheduler = TestScheduler(initialClock: 0)
-        let observer = scheduler.createObserver(String.self)
+        let observer = scheduler.createObserver([String].self)
         
-        service.getLanguageList().bind(to: observer).di
+        service.getLanguageList()
+            .observeOn(scheduler)
+            .subscribe(observer)
+            .disposed(by: disposeBag)
+        
+        scheduler.start()
+        
+        let expectedEvents = [
+            next(1, [
+                "Swift",
+                "Objective-C",
+                "Java",
+                "C",
+                "C++",
+                "Python",
+                "C#"
+                ]),
+            completed(2)
+        ]
+        XCTAssertEqual(observer.events, expectedEvents)
     }
 }
 
