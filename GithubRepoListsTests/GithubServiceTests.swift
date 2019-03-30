@@ -14,8 +14,8 @@ import RxTest
 class GithubServiceTests: XCTestCase {
     func test_getLanguageList() {
         let disposeBag = DisposeBag()
-        let urlSession = URLSessionMock()
-        let service = GithubService(session: urlSession)
+        let networkSession = NetworkSessionMock()
+        let service = GithubService(session: networkSession)
         
         let scheduler = TestScheduler(initialClock: 0)
         let observer = scheduler.createObserver([String].self)
@@ -41,8 +41,4 @@ class GithubServiceTests: XCTestCase {
         ]
         XCTAssertEqual(observer.events, expectedEvents)
     }
-}
-
-class URLSessionMock: URLSession {
-    
 }

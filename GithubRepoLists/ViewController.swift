@@ -48,9 +48,8 @@ class ViewController: UIViewController {
     }
     
     private func setupBindings() {
-        languagesListViewModel.languages
-        .observeOn(MainScheduler.instance)
-        .bind(to: languagesTableView.rx.items(cellIdentifier: Constants.languagesReuseIdentifier)) { row, model, cell in
+        languagesListViewModel.languages.asDriver(onErrorJustReturn: [])
+            .drive(languagesTableView.rx.items(cellIdentifier: Constants.languagesReuseIdentifier)) { row, model, cell in
             cell.textLabel?.text = model.capitalized
         }.disposed(by: disposeBag)
     }
@@ -97,19 +96,5 @@ class RepositoryViewModel {
         self.description = repository.description
         self.starsCountText = "⭐️ \(repository.starsCount)"
         self.url = URL(string: repository.url)!
-    }
-}
-
-class LanguageListViewModel {
-    
-    // MARK: - Inputs
-    let selectLanguage: AnyObserver<String>
-    
-    // MARK: - Outputs
-    let languages: Observable<[String]>
-    
-    init(githubService: GithubService = GithubService()) {
-        self.languages = githubService.getLanguageList()
-        self.selectLanguage = PublishSubject<String>().asObserver()
     }
 }

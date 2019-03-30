@@ -11,9 +11,9 @@ import RxSwift
 
 /// A service that knows how to perform requests for GitHub data.
 class GithubService {
-    private let session: URLSession
+    private let session: NetworkSession
 
-    init(session: URLSession = URLSession.shared) {
+    init(session: NetworkSession = URLSession.shared) {
         self.session = session
     }
 
