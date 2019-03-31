@@ -9,11 +9,12 @@
 import RxSwift
 
 class LanguageListViewModel {
-    
     // MARK: - Inputs
+    
     let selectLanguage: AnyObserver<String>
     
     // MARK: - Outputs
+    
     let languages: Observable<[String]>
     
     init(githubService: GithubService = GithubService()) {

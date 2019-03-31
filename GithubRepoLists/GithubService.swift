@@ -28,7 +28,7 @@ class GithubService {
             "C++",
             "Python",
             "C#"
-            ])
+        ])
     }
 
     //    func fetchPlaceData() -> Observable<[Place]> {

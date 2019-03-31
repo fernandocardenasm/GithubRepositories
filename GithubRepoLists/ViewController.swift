@@ -6,12 +6,11 @@
 //  Copyright © 2019 Fernando. All rights reserved.
 //
 
-import UIKit
-import RxSwift
 import RxCocoa
+import RxSwift
+import UIKit
 
 class ViewController: UIViewController {
-    
     lazy var languagesTableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -39,8 +38,7 @@ class ViewController: UIViewController {
          languagesTableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor,
                                                       constant: -10),
          languagesTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor,
-                                                    constant: -10)
-            ].forEach { $0.isActive = true}
+                                                    constant: -10)].forEach { $0.isActive = true }
     }
     
     private func registerCellForLanguagesTableView() {
@@ -49,9 +47,9 @@ class ViewController: UIViewController {
     
     private func setupBindings() {
         languagesListViewModel.languages.asDriver(onErrorJustReturn: [])
-            .drive(languagesTableView.rx.items(cellIdentifier: Constants.languagesReuseIdentifier)) { row, model, cell in
-            cell.textLabel?.text = model.capitalized
-        }.disposed(by: disposeBag)
+            .drive(languagesTableView.rx.items(cellIdentifier: Constants.languagesReuseIdentifier)) { _, model, cell in
+                cell.textLabel?.text = model.capitalized
+            }.disposed(by: disposeBag)
     }
     
     private struct Constants {
@@ -73,7 +71,7 @@ extension Repository {
             let description = json["description"] as? String,
             let starsCount = json["stargazers_count"] as? Int,
             let url = json["html_url"] as? String
-            else { return nil }
+        else { return nil }
         
         self.init(fullName: fullName, description: description, starsCount: starsCount, url: url)
     }
@@ -92,9 +90,9 @@ class RepositoryViewModel {
     let url: URL
     
     init(repository: Repository) {
-        self.name = repository.fullName
-        self.description = repository.description
-        self.starsCountText = "⭐️ \(repository.starsCount)"
-        self.url = URL(string: repository.url)!
+        name = repository.fullName
+        description = repository.description
+        starsCountText = "⭐️ \(repository.starsCount)"
+        url = URL(string: repository.url)!
     }
 }

@@ -6,10 +6,10 @@
 //  Copyright © 2019 Fernando. All rights reserved.
 //
 
-import XCTest
+@testable import GithubRepoLists
 import RxSwift
 import RxTest
-@testable import GithubRepoLists
+import XCTest
 
 class GithubServiceTests: XCTestCase {
     func test_getLanguageList() {
@@ -36,7 +36,7 @@ class GithubServiceTests: XCTestCase {
                 "C++",
                 "Python",
                 "C#"
-                ]),
+            ]),
             completed(2)
         ]
         XCTAssertEqual(observer.events, expectedEvents)

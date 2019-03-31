@@ -14,7 +14,7 @@ protocol NetworkSession {
 
 extension URLSession: NetworkSession {
     func loadData(from url: URL, completionHandler: @escaping (Data?, Error?) -> Void) {
-        let task = dataTask(with: url) { (data, _, error) in
+        let task = dataTask(with: url) { data, _, error in
             completionHandler(data, error)
         }
         task.resume()

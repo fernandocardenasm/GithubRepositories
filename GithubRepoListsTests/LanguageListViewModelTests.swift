@@ -6,16 +6,16 @@
 //  Copyright © 2019 Fernando. All rights reserved.
 //
 
-import XCTest
-import RxSwift
 @testable import GithubRepoLists
+import RxSwift
+import XCTest
 
 class LanguageListViewModelTests: XCTestCase {
     func test_init() {
         let networkSession = NetworkSessionMock()
         let githubService = GithubServiceMock(session: networkSession)
         let viewModel = LanguageListViewModel(githubService: githubService)
-        
+
         // TO DO: Evaluate whether the init is done correctly
     }
 }
